@@ -46,6 +46,7 @@ public class ClubMemberService {
     }
 
     private ClubMemberDTO createClubMemberFallBack(ClubMemberDTO clubMemberDTO) {
+        log.info("Circuit open... Executing fallback");
         return clubMemberDTO;
     }
 

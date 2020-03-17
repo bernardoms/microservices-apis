@@ -1,0 +1,47 @@
+version: '3'
+
+services:       
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_DATABASE: service
+      MONGO_INITDB_ROOT_USERNAME: service
+      MONGO_INITDB_ROOT_PASSWORD: service
+      MONGO_NON_ROOT_USERNAM: service
+      MONGO_NON_ROOT_PASSWORD: service
+    command: ["--bind_ip_all"]
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongo-volume:/data/db
+    network_mode: host    
+
+  campaign:
+    image: bernardoms/campaign-team
+    environment:
+      - "JAVA_OPTS=-Dspring.data.mongodb.uri=mongodb://service:service@127.0.0.1:27017/local?authSource=admin"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongo
+    network_mode: host
+
+  team:
+    image: bernardoms/teams-api
+    environment:
+      - "JAVA_OPTS=-Dspring.data.mongodb.uri=mongodb://service:service@127.0.0.1:27017/local?authSource=admin -Dcampaign.endpoint=http://127.0.0.1:8080/v1"
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mongo
+    network_mode: host
+
+  club-member:
+    image: bernardoms/club-member
+    environment:
+      - "JAVA_OPTS=-Dspring.data.mongodb.uri=mongodb://service:service@127.0.0.1:27017/local?authSource=admin -Dserver.port=8082 -Dteam.endpoint=http://127.0.0.1:8081/v1"
+    ports:
+      - "8082:8082"
+    depends_on:
+      - mongo
+    network_mode: host
