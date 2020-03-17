@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "GET",
+	    "urlPathPattern": "/v1/teams/.*/associate/campaigns"
+	},
+    "response": {
+		"status": 200,
+		"bodyFileName": "teamResponse.json",
+		"headers": {
+			"Content-Type": "application/json; charset=utf-8"
+        }
+    }
+}

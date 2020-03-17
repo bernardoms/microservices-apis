@@ -1,0 +1,23 @@
+version: '2.1'
+
+services:
+  wiremock:
+      image: ekino/wiremock
+      ports:
+        - "3002:8080"
+      volumes:
+       - ../src/test/resources/wiremock/__files:/wiremock/__files
+       - ../src/test/resources/wiremock/mappings:/wiremock/mappings
+       
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_DATABASE: service
+      MONGO_INITDB_ROOT_USERNAME: service
+      MONGO_INITDB_ROOT_PASSWORD: service
+      MONGO_NON_ROOT_USERNAM: service
+      MONGO_NON_ROOT_PASSWORD: service
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongo-volume:/data/db

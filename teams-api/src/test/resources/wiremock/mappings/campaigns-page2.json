@@ -1,0 +1,24 @@
+{
+    "request": {
+        "method": "GET",
+	    "urlPathPattern": "/v1/campaigns",
+		"queryParameters" : {
+			"team_id" : {
+				"matches" : ".*"
+			},
+			"offset" : {
+				"equalTo" : "1"
+			},
+			"limit" : {
+				"equalTo" : "1"
+			}
+		}
+	},
+    "response": {
+		"status": 200,
+		"bodyFileName": "campaigns-page2.json",
+		"headers": {
+			"Content-Type": "application/json; charset=utf-8"
+        }
+    }
+}

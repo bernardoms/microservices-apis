@@ -1,0 +1,5 @@
+FROM openjdk:11
+
+COPY target/*.jar /app/club-member-api-0.0.1-SNAPSHOT.jar
+
+CMD java $JAVA_OPTS -jar /app/club-member-api-0.0.1-SNAPSHOT.jar

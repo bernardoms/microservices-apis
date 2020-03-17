@@ -1,0 +1,19 @@
+{
+    "name": "Vasco",
+    "championship": "Serie A",
+	"team_id" : "507f191e810c19729de860ea",
+    "campaigns": [
+			{
+				"name": "Campaign 1",
+				"from": "2017-01-10",
+				"to": "2020-10-02",
+				"team_id": "1"
+			},
+			{
+				"name": "Campaign 2",
+				"from": "2017-01-10",
+				"to": "2020-10-01",
+				"team_id": "1"
+			}
+		]
+}

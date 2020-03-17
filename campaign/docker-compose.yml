@@ -1,0 +1,15 @@
+version: '2.1'
+
+services:       
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_DATABASE: service
+      MONGO_INITDB_ROOT_USERNAME: service
+      MONGO_INITDB_ROOT_PASSWORD: service
+      MONGO_NON_ROOT_USERNAM: service
+      MONGO_NON_ROOT_PASSWORD: service
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongo-volume:/data/db
